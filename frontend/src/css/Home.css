@@ -1,0 +1,25 @@
+.home{
+
+    width:90%;
+
+    margin:40px auto;
+
+}
+
+.home h1{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.productos-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:30px;
+
+}
