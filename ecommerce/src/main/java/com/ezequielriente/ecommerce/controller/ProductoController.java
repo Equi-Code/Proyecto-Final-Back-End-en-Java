@@ -5,8 +5,10 @@ import com.ezequielriente.ecommerce.mapper.ProductoMapper;
 import com.ezequielriente.ecommerce.service.ProductoService;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.List;
 
@@ -27,5 +29,13 @@ public class ProductoController {
                 .stream()
                 .map(ProductoMapper::toDTO)
                 .toList();
+    }
+
+    @GetMapping("/{id}")
+    public ProductoResponseDTO buscarPorId(@PathVariable Integer id) {
+
+        return ProductoMapper.toDTO(
+                service.buscarPorId(id));
+
     }
 }

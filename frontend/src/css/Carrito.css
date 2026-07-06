@@ -1,0 +1,133 @@
+.carrito-container{
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.carrito-container h1{
+    margin-bottom: 30px;
+}
+
+.item-carrito{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: var(--radio-lg);
+    box-shadow: var(--sombra-sm);
+}
+
+.acciones-carrito{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Botones -/+ : cuadrados y compactos, no comparten tamaño con los botones de acción */
+.btn-cantidad{
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: var(--radio-sm);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transicion);
+}
+
+.btn-cantidad:hover{
+    background: #f0f0f0;
+}
+
+.cantidad-valor{
+    min-width: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.eliminar{
+    background: var(--color-peligro);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background var(--transicion);
+}
+
+.eliminar:hover{
+    background: var(--color-peligro-hover);
+}
+
+.resumen{
+    margin-top: 40px;
+    text-align: right;
+}
+
+.btn-finalizar{
+    background: var(--color-primario);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background var(--transicion), box-shadow var(--transicion);
+}
+
+.btn-finalizar:hover{
+    background: var(--color-primario-hover);
+    box-shadow: 0 0 18px var(--color-primario-glow);
+}
+
+.carrito-vacio{
+    text-align: center;
+    margin-top: 80px;
+}
+
+.carrito-vacio h2{
+    margin-bottom: 20px;
+    color: var(--color-text-muted);
+}
+
+.btn-volver{
+    background: var(--color-primario);
+    color: white;
+    border: none;
+    text-decoration: none;
+    font-size: 1.05rem;
+    padding: 0 32px;
+    transition: background var(--transicion), box-shadow var(--transicion), transform var(--transicion);
+}
+
+.btn-volver:hover{
+    background: var(--color-primario-hover);
+    box-shadow: 0 0 18px var(--color-primario-glow);
+    transform: translateY(-2px);
+}
+
+.acciones-finales{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.vaciar{
+    background: var(--color-secundario);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background var(--transicion);
+}
+
+.vaciar:hover{
+    background: #5a6268;
+}

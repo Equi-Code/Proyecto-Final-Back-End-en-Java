@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
 import "../css/navbar.css";
+import { useCarrito } from "../hooks/useCarrito";
+
 
 function Navbar() {
+
+    const { carrito } = useCarrito();
+
+    const cantidad = carrito.reduce(
+        (total, item) => total + item.cantidad,
+        0
+    );
+
     return (
         <nav className="navbar">
 
@@ -22,7 +32,23 @@ function Navbar() {
                 </li>
 
                 <li>
-                    <Link to="/carrito">🛒 Carrito</Link>
+
+                    <Link
+                        to="/carrito"
+                        className="carrito-link"
+                    >
+
+                        🛒 Carrito
+
+                        {
+                            cantidad > 0 &&
+                            <span className="badge-carrito">
+                                ({cantidad})
+                            </span>
+                        }
+
+                    </Link>
+
                 </li>
 
             </ul>

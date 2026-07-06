@@ -1,6 +1,12 @@
+import { Link } from "react-router-dom";
 import "../css/ProductoCard.css";
+import { useCarrito } from "../hooks/useCarrito";
+
+
 
 function ProductoCard({ producto }) {
+
+    const { agregarProducto } = useCarrito();
 
     return (
 
@@ -8,25 +14,31 @@ function ProductoCard({ producto }) {
 
             <h3>{producto.nombre}</h3>
 
-            <p className="categoria">
-                {producto.categoria}
-            </p>
-
             <p className="precio">
                 ${producto.precio}
             </p>
 
             <p className="stock">
-
                 Stock: {producto.stock}
-
             </p>
 
-            <button>
+            <div className="acciones">
 
-                Agregar al carrito
+                <Link
+                    className="btn-detalle"
+                    to={`/producto/${producto.id}`}
+                >
+                    Ver detalle
+                </Link>
 
-            </button>
+                <button
+                    className="carrito"
+                    onClick={() => agregarProducto(producto)}
+                >
+                    Agregar al carrito
+                </button>
+
+            </div>
 
         </div>
 

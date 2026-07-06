@@ -8,8 +8,9 @@ import Indumentaria from "../pages/Indumentaria";
 import Carrito from "../pages/Carrito";
 import Checkout from "../pages/Checkout";
 import NotFound from "../pages/NotFound";
+import DetalleProducto from "../pages/DetalleProducto";
 
-function AppRouter() {
+export default function AppRouter() {
 
     return (
 
@@ -31,8 +32,11 @@ function AppRouter() {
 
                     <Route path="*" element={<NotFound />} />
 
+                    <Route
+                        path="/producto/:id"
+                        element={<DetalleProducto />}
+                    />
                 </Routes>
-
             </MainLayout>
 
         </BrowserRouter>
@@ -40,5 +44,3 @@ function AppRouter() {
     );
 
 }
-
-export default AppRouter;

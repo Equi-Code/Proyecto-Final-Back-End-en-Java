@@ -1,83 +1,116 @@
-.producto-card {
-
+.producto-card{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     background: white;
-
-    border-radius: 12px;
-
+    border-radius: var(--radio-lg);
     padding: 20px;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,.12);
-
-    transition: .3s;
-
+    box-shadow: var(--sombra-md);
+    transition: transform var(--transicion), box-shadow var(--transicion);
     text-align: center;
-
 }
 
 .producto-card:hover{
-
     transform: translateY(-5px);
-
-    box-shadow:0 10px 20px rgba(0,0,0,.18);
-
+    box-shadow: var(--sombra-lg);
 }
 
 .producto-card h3{
-
-    margin-bottom:15px;
-
-    color:#222;
-
+    margin-bottom: 15px;
+    color: var(--color-text);
 }
 
-.precio{
-
-    color:#0f766e;
-
-    font-size:24px;
-
-    font-weight:bold;
-
-}
-
-.stock{
-
-    color:#666;
-
-    margin:15px 0;
-
-}
-
-.producto-card button{
-
-    width:100%;
-
-    padding:12px;
-
-    border:none;
-
-    border-radius:8px;
-
-    background:#2563eb;
-
-    color:white;
-
-    cursor:pointer;
-
-    font-size:16px;
-
-    transition:.3s;
-
-}
-
-.categoria {
-    color: #666;
-    font-size: 0.9rem;
+.categoria{
+    color: var(--color-text-muted);
+    font-size: .9rem;
     margin-bottom: 8px;
 }
 
-.producto-card button:hover{
+.precio{
+    font-family: var(--font-display);
+    color: var(--color-precio);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
 
-    background:#1d4ed8;
+.stock{
+    color: var(--color-text-muted);
+    margin: 15px 0;
+}
 
+.producto-card > button{
+    width: 100%;
+    margin-top: auto;
+    border: none;
+    background: var(--color-primario);
+    color: white;
+    cursor: pointer;
+    transition: background var(--transicion), box-shadow var(--transicion);
+}
+
+.producto-card > button:hover{
+    background: var(--color-primario-hover);
+    box-shadow: 0 0 16px var(--color-primario-glow);
+}
+
+/* --- Acciones dentro de la card (detalle / agregar al carrito) --- */
+.acciones{
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 15px;
+}
+
+.acciones button{
+    margin-top: 0;
+}
+
+.acciones button,
+.acciones a{
+    flex: 1;
+}
+
+.btn-detalle,
+.detalle{
+    text-align: center;
+    text-decoration: none;
+    transition: background var(--transicion), color var(--transicion), box-shadow var(--transicion);
+}
+
+.btn-detalle{
+    background: var(--color-primario);
+    color: white;
+    border: none;
+}
+
+.btn-detalle:hover{
+    background: var(--color-primario-hover);
+    box-shadow: 0 0 16px var(--color-primario-glow);
+}
+
+/* Variante "outline" del botón de detalle, por si se usa en otro contexto */
+.detalle{
+    background: transparent;
+    color: var(--color-primario);
+    border: 1px solid var(--color-primario);
+}
+
+.detalle:hover{
+    background: var(--color-primario);
+    color: white;
+    box-shadow: 0 0 16px var(--color-primario-glow);
+}
+
+.carrito{
+    flex: 1;
+    border: none;
+    background: var(--color-dark);
+    color: var(--color-primario);
+    cursor: pointer;
+    transition: background var(--transicion), box-shadow var(--transicion);
+}
+
+.carrito:hover{
+    background: #1f2430;
+    box-shadow: 0 0 16px var(--color-primario-glow);
 }

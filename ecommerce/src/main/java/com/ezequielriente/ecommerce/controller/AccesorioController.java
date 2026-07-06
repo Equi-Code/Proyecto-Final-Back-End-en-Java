@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import com.ezequielriente.ecommerce.dto.request.AccesorioRequestDTO;
 import com.ezequielriente.ecommerce.dto.response.AccesorioResponseDTO;
+
 import com.ezequielriente.ecommerce.mapper.AccesorioMapper;
+
 import com.ezequielriente.ecommerce.response.ApiResponseDTO;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -17,9 +19,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-
-
 
 @RestController
 @RequestMapping("/api/accesorios")
@@ -36,12 +37,20 @@ public class AccesorioController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Listado obtenido correctamente")
     })
-@GetMapping
-public Page<AccesorioResponseDTO> listar(Pageable pageable) {
+        @GetMapping
+        public Page<AccesorioResponseDTO> listar(
 
-    return service.listar(pageable)
-            .map(AccesorioMapper::toDTO);
-}
+                        @RequestParam(defaultValue = "0") int page,
+
+                        @RequestParam(defaultValue = "10") int size
+
+        ) {
+
+                Pageable pageable = PageRequest.of(page, size);
+
+                return service.listar(pageable)
+                                .map(AccesorioMapper::toDTO);
+        }
 
     // GET - Buscar por ID
 
@@ -80,14 +89,13 @@ public Page<AccesorioResponseDTO> listar(Pageable pageable) {
                 .body(AccesorioMapper.toDTO(accesorio));
     }
 
-        // PUT - Actualizar
+    // PUT - Actualizar
 
     @Operation(summary = "Actualizar accesorio", description = "Actualiza los datos de un accesorio existente.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Accesorio actualizado correctamente"),
             @ApiResponse(responseCode = "404", description = "Accesorio no encontrado")
     })
-
 
     @PutMapping("/{id}")
     public ResponseEntity<Accesorio> actualizar(
@@ -102,15 +110,13 @@ public Page<AccesorioResponseDTO> listar(Pageable pageable) {
 
         return ResponseEntity.ok(actualizado);
     }
-    
-    
+
     // DELETE - Eliminar
     @Operation(summary = "Eliminar accesorio", description = "Elimina un accesorio por su identificador.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Accesorio eliminado correctamente"),
             @ApiResponse(responseCode = "404", description = "Accesorio no encontrado")
     })
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponseDTO> eliminar(@PathVariable Integer id) {
