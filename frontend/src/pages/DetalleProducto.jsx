@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { obtenerProducto } from "../services/productoService";
@@ -15,6 +15,8 @@ export default function DetalleProducto() {
 
     const [producto, setProducto] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [mensaje, setMensaje] = useState("");
+    const timeoutRef = useRef(null);
 
     useEffect(() => {
 
@@ -41,6 +43,23 @@ export default function DetalleProducto() {
 
     }, [id]);
 
+    // Limpia el timeout del mensaje si el usuario navega antes de que termine
+    useEffect(() => {
+        return () => clearTimeout(timeoutRef.current);
+    }, []);
+
+    function handleAgregar() {
+
+        agregarProducto(producto);
+        setMensaje("✅ Producto agregado al carrito");
+
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = setTimeout(() => {
+            setMensaje("");
+        }, 2000);
+
+    }
+
     if (loading) {
         return <h2>Cargando producto...</h2>;
     }
@@ -49,11 +68,27 @@ export default function DetalleProducto() {
         return <h2>Producto no encontrado.</h2>;
     }
 
+    const sinStock = producto.stock <= 0;
+
     return (
 
         <div className="detalle-container">
 
+            {
+                mensaje &&
+                <div className="mensaje-exito">
+                    {mensaje}
+                </div>
+            }
+
             <h1>{producto.nombre}</h1>
+
+            <p className="categoria">
+
+                {producto.categoria}
+
+            </p>
+
 
             <div className="detalle-info">
 
@@ -87,7 +122,12 @@ export default function DetalleProducto() {
                 </p>
 
                 <p>
-                    <strong>Stock:</strong> {producto.stock}
+                    <strong>Stock:</strong>{" "}
+                    {sinStock ? (
+                        <span className="sin-stock">Sin stock</span>
+                    ) : (
+                        producto.stock
+                    )}
                 </p>
 
             </div>
@@ -95,15 +135,15 @@ export default function DetalleProducto() {
             <div className="botones">
 
                 <button
-                    onClick={() => {
-                        agregarProducto(producto);
-                        alert("✅ Producto agregado al carrito.");
-                    }}
+                    className="btn-agregar"
+                    onClick={handleAgregar}
+                    disabled={sinStock}
                 >
-                    Agregar al carrito
+                    {sinStock ? "Sin stock" : "Agregar al carrito"}
                 </button>
-                
+
                 <button
+                    className="btn-secundario"
                     onClick={() => navigate(-1)}
                 >
                     Volver

@@ -30,14 +30,38 @@
 .botones button{
     flex: 1;
     min-width: 140px;
-    background: var(--color-primario);
-    color: white;
     border: none;
     cursor: pointer;
-    transition: background var(--transicion), box-shadow var(--transicion);
+    transition: background var(--transicion), box-shadow var(--transicion), color var(--transicion);
 }
 
-.botones button:hover{
+.btn-agregar{
+    background: var(--color-primario);
+    color: white;
+}
+
+.btn-agregar:hover{
     background: var(--color-primario-hover);
     box-shadow: 0 0 16px var(--color-primario-glow);
+}
+
+.btn-agregar:disabled{
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.botones .btn-secundario{
+    background: transparent;
+    color: var(--color-text-muted);
+    border: 1px solid #ccc;
+}
+
+.btn-secundario:hover{
+    background: #f0f0f0;
+}
+
+.sin-stock{
+    color: var(--color-peligro);
+    font-weight: 600;
 }

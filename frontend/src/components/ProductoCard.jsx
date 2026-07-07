@@ -41,13 +41,38 @@ function ProductoCard({ producto }) {
 
             <h3>{producto.nombre}</h3>
 
+            <p className="categoria">
+
+                {producto.categoria}
+
+            </p>
+
+
+
             <p className="precio">
                 ${producto.precio}
             </p>
 
-            <p className="stock">
-                Stock: {producto.stock}
+            <p
+                className={
+                    producto.stock > 0
+                        ? "stock"
+                        : "sin-stock"
+                }
+            >
+
+                {
+                    producto.stock > 0
+
+                        ? `Stock disponible: ${producto.stock}`
+
+                        : "❌ Sin stock"
+
+                }
+
             </p>
+
+
 
             <div className="acciones">
 
@@ -61,6 +86,7 @@ function ProductoCard({ producto }) {
                 <button
                     className="carrito"
                     onClick={handleAgregar}
+                    disabled={producto.stock <= 0}
                 >
                     Agregar al carrito
                 </button>

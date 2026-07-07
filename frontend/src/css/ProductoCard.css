@@ -136,3 +136,35 @@
     background: #1f2430;
     box-shadow: 0 0 16px var(--color-primario-glow);
 }
+
+.categoria{
+
+    color:#777;
+
+    font-size:14px;
+
+    margin-bottom:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+
+
+}
+
+.stock{
+
+    color:#2e7d32;
+
+    font-weight:bold;
+
+}
+
+.sin-stock{
+
+    color:#d32f2f;
+
+    font-weight:bold;
+
+}
