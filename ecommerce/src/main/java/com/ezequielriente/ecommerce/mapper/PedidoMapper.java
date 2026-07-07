@@ -15,7 +15,9 @@ public class PedidoMapper {
 
         dto.setId(pedido.getId());
         dto.setFecha(pedido.getFecha());
-        dto.setEstado(pedido.getEstado());
+        dto.setEstado(
+        pedido.getEstado().name()
+);
         dto.setTotal(pedido.getTotal());
 
         dto.setLineas(

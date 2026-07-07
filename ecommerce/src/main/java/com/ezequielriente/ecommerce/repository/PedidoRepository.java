@@ -2,7 +2,10 @@ package com.ezequielriente.ecommerce.repository;
 
 import com.ezequielriente.ecommerce.model.Pedido;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
+@Repository
+public interface PedidoRepository
+        extends JpaRepository<Pedido, Integer> {
 
 }

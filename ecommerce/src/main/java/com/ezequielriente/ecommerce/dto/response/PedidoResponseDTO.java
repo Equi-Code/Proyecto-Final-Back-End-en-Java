@@ -1,15 +1,16 @@
 package com.ezequielriente.ecommerce.dto.response;
 
-import com.ezequielriente.ecommerce.model.EstadoPedido;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class PedidoResponseDTO {
 
     private Integer id;
+
     private LocalDateTime fecha;
-    private EstadoPedido estado;
+
+    private String estado;
+
     private Double total;
 
     private List<LineaPedidoResponseDTO> lineas;
@@ -30,11 +31,11 @@ public class PedidoResponseDTO {
         this.fecha = fecha;
     }
 
-    public EstadoPedido getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoPedido estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

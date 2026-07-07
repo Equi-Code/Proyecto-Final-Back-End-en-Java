@@ -120,6 +120,18 @@
     flex-wrap: wrap;
 }
 
+.btn-seguir{
+    background: var(--color-secundario);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background var(--transicion);
+}
+
+.btn-seguir:hover{
+    background: #5a6268;
+}
+
 .vaciar{
     background: var(--color-secundario);
     color: white;

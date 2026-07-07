@@ -95,11 +95,14 @@ export default function DetalleProducto() {
             <div className="botones">
 
                 <button
-                    onClick={() => agregarProducto(producto)}
+                    onClick={() => {
+                        agregarProducto(producto);
+                        alert("✅ Producto agregado al carrito.");
+                    }}
                 >
                     Agregar al carrito
                 </button>
-
+                
                 <button
                     onClick={() => navigate(-1)}
                 >

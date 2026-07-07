@@ -17,7 +17,7 @@ public class Accesorio extends Producto {
 
     @Override
     public String getCategoria() {
-        return "Accesorio";
+        return "Accesorios";
     }
 
     public String getTipo() {

@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@SuppressWarnings("null")
 @Entity
 public class Pedido {
 
@@ -27,6 +29,8 @@ public class Pedido {
     public void setTotal(Double total) {
         this.total = total;
     }
+
+
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LineaPedido> lineas = new ArrayList<>();
@@ -71,6 +75,14 @@ public class Pedido {
 
     public void setLineas(List<LineaPedido> lineas) {
         this.lineas = lineas;
+    }
+
+        public void calcularTotal() {
+
+        this.total = lineas.stream()
+                .mapToDouble(LineaPedido::getSubtotal)
+                .sum();
+
     }
 
 }

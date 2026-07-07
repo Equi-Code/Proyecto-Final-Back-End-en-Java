@@ -6,6 +6,11 @@ import com.ezequielriente.ecommerce.mapper.PedidoMapper;
 import com.ezequielriente.ecommerce.model.Pedido;
 import com.ezequielriente.ecommerce.response.ApiResponseDTO;
 import com.ezequielriente.ecommerce.service.PedidoService;
+import com.ezequielriente.ecommerce.dto.request.EstadoPedidoRequestDTO;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 import jakarta.validation.Valid;
 
@@ -19,57 +24,76 @@ import java.util.List;
 @RequestMapping("/api/pedidos")
 public class PedidoController {
 
-    private final PedidoService service;
+        private final PedidoService service;
 
-    public PedidoController(PedidoService service) {
-        this.service = service;
-    }
+        public PedidoController(PedidoService service) {
+                this.service = service;
+        }
 
-    @GetMapping
-    public List<PedidoResponseDTO> listar() {
+        @Operation(summary = "Listar pedidos")
+        @ApiResponses({
+                        @ApiResponse(responseCode = "200", description = "Listado obtenido correctamente")
+        })
 
-        return service.listar()
-                .stream()
-                .map(PedidoMapper::toDTO)
-                .toList();
-    }
+        @GetMapping
+        public List<PedidoResponseDTO> listar() {
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PedidoResponseDTO> buscar(@PathVariable Integer id) {
+                return service.listar()
+                                .stream()
+                                .map(PedidoMapper::toDTO)
+                                .toList();
+        }
 
-        Pedido pedido = service.buscarPorId(id);
+        @Operation(summary = "Buscar pedido por ID")
+        @ApiResponses({
+                        @ApiResponse(responseCode = "200", description = "Pedido encontrado"),
+                        @ApiResponse(responseCode = "404", description = "Pedido no encontrado")
+        })
 
-        return ResponseEntity.ok(
-                PedidoMapper.toDTO(pedido));
-    }
+        @GetMapping("/{id}")
+        public ResponseEntity<PedidoResponseDTO> buscar(@PathVariable Integer id) {
 
-    @PostMapping
-    public ResponseEntity<PedidoResponseDTO> guardar(
-            @Valid @RequestBody PedidoRequestDTO dto) {
+                Pedido pedido = service.buscarPorId(id);
 
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(service.guardar(dto));
-    }
+                return ResponseEntity.ok(
+                                PedidoMapper.toDTO(pedido));
+        }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Pedido> actualizar(
-            @PathVariable Integer id,
-            @RequestBody Pedido pedido) {
+        @Operation(summary = "Crear pedido")
+        @ApiResponses({
+                        @ApiResponse(responseCode = "201", description = "Pedido creado correctamente")
+        })
+        @PostMapping
+        public ResponseEntity<PedidoResponseDTO> guardar(
+                        @Valid @RequestBody PedidoRequestDTO dto) {
 
-        return ResponseEntity.ok(
-                service.actualizar(id, pedido));
-    }
+                PedidoResponseDTO pedido = service.guardar(dto);
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponseDTO> eliminar(
-            @PathVariable Integer id) {
+                return ResponseEntity
+                                .status(HttpStatus.CREATED)
+                                .body(pedido);
+        }
 
-        service.eliminar(id);
+        @Operation(summary = "Eliminar pedido")
+        @DeleteMapping("/{id}")
+        public ResponseEntity<ApiResponseDTO> eliminar(
+                        @PathVariable Integer id) {
 
-        return ResponseEntity.ok(
-                new ApiResponseDTO(
-                        true,
-                        "Pedido eliminado correctamente"));
-    }
+                service.eliminar(id);
+
+                return ResponseEntity.ok(
+                                new ApiResponseDTO(
+                                                true,
+                                                "Pedido eliminado correctamente"));
+        }
+
+        @PatchMapping("/{id}/estado")
+        public PedidoResponseDTO cambiarEstado(
+                        @PathVariable Integer id,
+                        @RequestBody EstadoPedidoRequestDTO dto) {
+
+                return service.cambiarEstado(id, dto.getEstado());
+
+        }
+
 }

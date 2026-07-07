@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useCarrito } from "../hooks/useCarrito";
 
 import "../css/Carrito.css";
 
 export default function Carrito() {
+    const navigate = useNavigate();
 
     const {
         carrito,
@@ -104,7 +106,13 @@ export default function Carrito() {
                     Vaciar carrito
                 </button>
 
-                <button className="btn-finalizar">
+                <button className="btn-seguir"
+                    onClick={() => navigate("/")}
+                >
+                    Seguir comprando
+                </button>
+
+                <button className="btn-finalizar" onClick={() => navigate("/checkout")}>
 
                     Finalizar compra
 

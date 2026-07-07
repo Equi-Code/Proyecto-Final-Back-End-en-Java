@@ -9,6 +9,9 @@ import Carrito from "../pages/Carrito";
 import Checkout from "../pages/Checkout";
 import NotFound from "../pages/NotFound";
 import DetalleProducto from "../pages/DetalleProducto";
+import Categoria from "../pages/Categoria";
+import Pedidos from "../pages/Pedidos";
+import DetallePedido from "../pages/DetallePedido";
 
 export default function AppRouter() {
 
@@ -36,6 +39,19 @@ export default function AppRouter() {
                         path="/producto/:id"
                         element={<DetalleProducto />}
                     />
+
+                    <Route path="/categoria/:categoria" element={<Categoria />} />
+
+                    <Route
+                        path="/pedidos"
+                        element={<Pedidos />}
+                    />
+
+                    <Route
+                        path="/pedidos/:id"
+                        element={<DetallePedido />}
+                    />
+
                 </Routes>
             </MainLayout>
 

@@ -48,11 +48,6 @@ public class PedidoService {
                 .orElseThrow(() -> new ProductoNoEncontradoException(id));
     }
 
-    public Pedido guardar(Pedido pedido) {
-        return repository.save(pedido);
-
-    }
-
     @Transactional
     public PedidoResponseDTO guardar(PedidoRequestDTO dto) {
 
@@ -148,5 +143,26 @@ public class PedidoService {
             return false;
         }
     }
+
+    @Transactional
+public PedidoResponseDTO cambiarEstado(Integer id, String estado) {
+
+    Pedido pedido = buscarPorId(id);
+
+    pedido.setEstado(
+            com.ezequielriente.ecommerce.model.EstadoPedido.valueOf(
+                    estado.toUpperCase()
+            )
+    );
+
+    Pedido actualizado = repository.save(pedido);
+
+    logger.info(
+            "Pedido {} actualizado a estado {}",
+            pedido.getId(),
+            pedido.getEstado());
+
+    return PedidoMapper.toDTO(actualizado);
+}
 
 }

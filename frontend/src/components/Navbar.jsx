@@ -23,15 +23,19 @@ function Navbar() {
                     <Link to="/">Inicio</Link>
                 </li>
 
+                <Link to="/categoria/indumentaria">Indumentaria</Link>
+                <Link to="/categoria/accesorios">Accesorios</Link>
+
+
                 <li>
-                    <Link to="/indumentaria">Indumentaria</Link>
+                    <Link to="/pedidos">
+                        Pedidos
+                    </Link>
                 </li>
 
                 <li>
-                    <Link to="/accesorios">Accesorios</Link>
-                </li>
 
-                <li>
+
 
                     <Link
                         to="/carrito"

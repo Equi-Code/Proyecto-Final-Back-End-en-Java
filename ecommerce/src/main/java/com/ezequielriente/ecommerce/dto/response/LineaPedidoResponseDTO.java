@@ -3,9 +3,13 @@ package com.ezequielriente.ecommerce.dto.response;
 public class LineaPedidoResponseDTO {
 
     private Integer productoId;
+
     private String producto;
+
     private Integer cantidad;
+
     private Double precioUnitario;
+
     private Double subtotal;
 
     public Integer getProductoId() {
@@ -47,4 +51,5 @@ public class LineaPedidoResponseDTO {
     public void setSubtotal(Double subtotal) {
         this.subtotal = subtotal;
     }
+
 }

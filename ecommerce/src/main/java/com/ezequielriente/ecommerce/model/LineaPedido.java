@@ -74,4 +74,9 @@ public class LineaPedido {
     public void setPrecioUnitario(Double precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
+
+    public Double getSubtotal() {
+    return precioUnitario * cantidad;
+}
+
 }
