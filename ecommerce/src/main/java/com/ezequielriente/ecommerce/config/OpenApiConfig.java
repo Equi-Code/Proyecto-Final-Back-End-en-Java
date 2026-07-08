@@ -35,19 +35,19 @@ public class OpenApiConfig {
 
                                 .name("Ezequiel Riente")
 
-                                .email("tu-email@gmail.com")
+                                .email("ezequielrientecode@gmail.com")
 
-                                .url("https://github.com/TU_GITHUB"))
+                                .url("https://github.com/Equi-Code"))
 
                         .license(new License()
 
                                 .name("MIT License")
-                                .url("https://opensource.org/licenses/MIT")))
+                                .url("https://github.com/Equi-Code/Proyecto-Final-Back-End-en-Java")))
 
                 .externalDocs(new ExternalDocumentation()
 
                         .description("Repositorio del proyecto")
-                        .url("https://github.com/TU_GITHUB"));
+                        .url("https://github.com/Equi-Code/Proyecto-Final-Back-End-en-Java"));
     }
 
 }
