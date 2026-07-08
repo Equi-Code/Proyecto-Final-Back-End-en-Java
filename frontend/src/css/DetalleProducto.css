@@ -11,6 +11,22 @@
     margin-bottom: 20px;
 }
 
+/* --- Imagen destacada del producto --- */
+.detalle-imagen{
+    width: 100%;
+    max-width: 500px;
+    border-radius: var(--radio-lg);
+    margin: 25px auto;
+    display: block;
+}
+
+.detalle-descripcion{
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 25px;
+}
+
 .detalle-info{
     margin: 15px 0;
 }

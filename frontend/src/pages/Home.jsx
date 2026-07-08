@@ -6,6 +6,7 @@ import "../css/Home.css";
 export default function Home() {
     const [productos, setProductos] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [busqueda, setBusqueda] = useState("");
 
     useEffect(() => {
         // Al definirla dentro del efecto, ESLint sabe exactamente que la actualización
@@ -32,13 +33,30 @@ export default function Home() {
         <div className="home">
             <h1>Tienda Deportiva</h1>
 
+            <div className="buscador">
+
+                <input
+                    type="text"
+                    placeholder="Buscar productos..."
+                    value={busqueda}
+                    onChange={(e) => setBusqueda(e.target.value)}
+                />
+
+            </div>
+
             <div className="productos-grid">
-                {productos.map((producto) => (
-                    <ProductoCard
-                        key={producto.id}
-                        producto={producto}
-                    />
-                ))}
+                {productos
+                    .filter(producto =>
+                        producto.nombre
+                            .toLowerCase()
+                            .includes(busqueda.toLowerCase())
+                    )
+                    .map((producto) => (
+                        <ProductoCard
+                            key={producto.id}
+                            producto={producto}
+                        />
+                    ))}
             </div>
         </div>
     );

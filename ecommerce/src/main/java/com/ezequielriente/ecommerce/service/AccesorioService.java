@@ -16,7 +16,7 @@ public class AccesorioService {
 
     private final AccesorioRepository repository;
 
-    public AccesorioService (AccesorioRepository repository) {
+    public AccesorioService(AccesorioRepository repository) {
         this.repository = repository;
     }
 
@@ -24,10 +24,10 @@ public class AccesorioService {
         return repository.findAll();
     }
 
-public Accesorio buscarPorId(Integer id) {
-    return repository.findById(id)
-            .orElseThrow(() -> new ProductoNoEncontradoException(id));
-}
+    public Accesorio buscarPorId(Integer id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new ProductoNoEncontradoException(id));
+    }
 
     public Accesorio guardar(Accesorio accesorio) {
         return repository.save(accesorio);
@@ -40,6 +40,8 @@ public Accesorio buscarPorId(Integer id) {
         accesorio.setPrecio(accesorioActualizado.getPrecio());
         accesorio.setStock(accesorioActualizado.getStock());
         accesorio.setTipo(accesorioActualizado.getTipo());
+        accesorio.setDescripcion(accesorioActualizado.getDescripcion());
+        accesorio.setImagenUrl(accesorioActualizado.getImagenUrl());
 
         return repository.save(accesorio);
     }
@@ -55,6 +57,6 @@ public Accesorio buscarPorId(Integer id) {
     }
 
     public Page<Accesorio> listar(Pageable pageable) {
-    return repository.findAll(pageable);
-}
+        return repository.findAll(pageable);
+    }
 }

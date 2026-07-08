@@ -7,6 +7,8 @@ public class ProductoResponseDTO {
     private Double precio;
     private Integer stock;
     private String categoria;
+    private String descripcion;
+private String imagenUrl;
 
     public Integer getId() {
         return id;
@@ -47,4 +49,21 @@ public class ProductoResponseDTO {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+
+    public String getDescripcion() {
+    return descripcion;
+}
+
+public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+}
+
+public String getImagenUrl() {
+    return imagenUrl;
+}
+
+public void setImagenUrl(String imagenUrl) {
+    this.imagenUrl = imagenUrl;
+}
+
 }

@@ -26,16 +26,24 @@ export async function obtenerPedido(id) {
 
 export async function cambiarEstado(id, estado) {
 
+      console.log({
+        id,
+        estado
+    });
+
     const response = await api.patch(
 
         `/pedidos/${id}/estado`,
-
-        {
-            estado
-        }
+        { estado }
 
     );
 
     return response.data;
+
+}
+
+export async function eliminarPedido(id) {
+
+    await api.delete(`/pedidos/${id}`);
 
 }

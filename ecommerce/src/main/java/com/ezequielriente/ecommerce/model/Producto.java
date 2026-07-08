@@ -17,6 +17,12 @@ public abstract class Producto {
     @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
 
+    @NotBlank(message = "La descripción es obligatoria")
+    @Column(length = 1000)
+    private String descripcion;
+
+    private String imagenUrl;
+
     @NotNull(message = "El precio es obligatorio")
     @Positive(message = "El precio debe ser mayor a cero")
     private Double precio;
@@ -28,10 +34,22 @@ public abstract class Producto {
     public Producto() {
     }
 
-    public Producto(String nombre, Double precio, Integer stock) {
+    public Producto(
+        String nombre,
+        Double precio,
+        Integer stock) {
+
+    this.nombre = nombre;
+    this.precio = precio;
+    this.stock = stock;
+}
+
+    public Producto(String nombre, Double precio, Integer stock, String descripcion, String imagenUrl) {
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
+        this.descripcion = descripcion;
+        this.imagenUrl = imagenUrl;
     }
 
     // Cada producto define su categoría
@@ -45,6 +63,22 @@ public abstract class Producto {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
     }
 
     public Double getPrecio() {

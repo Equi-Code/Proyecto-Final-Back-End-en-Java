@@ -39,7 +39,21 @@ function ProductoCard({ producto }) {
                 </div>
             }
 
+
+            <img
+                src={
+                    producto.imagenUrl ||
+                    "https://placehold.co/400x300?text=Sin+Imagen"
+                }
+                alt={producto.nombre}
+                className="producto-imagen"
+            />
+
             <h3>{producto.nombre}</h3>
+
+            <p className="descripcion">
+                {producto.descripcion}
+            </p>
 
             <p className="categoria">
 

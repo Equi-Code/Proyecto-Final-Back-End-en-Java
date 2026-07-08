@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import { obtenerPedido } from "../services/pedidoService";
 import { cambiarEstado } from "../services/pedidoService";
+import { eliminarPedido } from "../services/pedidoService";
+
 import "../css/Pedidos.css";
 
 export default function DetallePedido() {
@@ -11,11 +13,15 @@ export default function DetallePedido() {
 
     const [pedido, setPedido] = useState(null);
 
+    const navigate = useNavigate();
+
     async function actualizarEstado(e) {
 
         try {
 
             const nuevoEstado = e.target.value;
+
+              console.log(nuevoEstado);
 
             const actualizado = await cambiarEstado(
                 pedido.id,
@@ -29,6 +35,28 @@ export default function DetallePedido() {
             console.error(error);
 
             alert("No se pudo actualizar el estado del pedido.");
+
+        }
+
+    }
+
+    async function handleEliminar() {
+
+        if (window.confirm("¿Estás seguro de que quieres eliminar este pedido?")) {
+
+            try {
+
+                await eliminarPedido(pedido.id);
+
+                navigate("/pedidos");
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert("No se pudo eliminar el pedido.");
+
+            }
 
         }
 
@@ -77,10 +105,6 @@ export default function DetallePedido() {
                             PAGADO
                         </option>
 
-                        <option value="EN_PREPARACION">
-                            EN PREPARACIÓN
-                        </option>
-
                         <option value="ENVIADO">
                             ENVIADO
                         </option>
@@ -94,6 +118,24 @@ export default function DetallePedido() {
                 </p>
 
                 <p><strong>Total:</strong> ${pedido.total}</p>
+
+                <div className="acciones-pedido">
+
+                    <button
+                        className="btn-volver"
+                        onClick={() => navigate("/pedidos")}
+                    >
+                        ← Volver
+                    </button>
+
+                    <button
+                        className="btn-eliminar"
+                        onClick={handleEliminar}
+                    >
+                        🗑 Eliminar
+                    </button>
+
+                </div>
 
             </div>
 

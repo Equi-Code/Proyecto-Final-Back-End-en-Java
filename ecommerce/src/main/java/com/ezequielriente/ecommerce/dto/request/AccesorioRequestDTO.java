@@ -18,6 +18,12 @@ public class AccesorioRequestDTO {
     @NotBlank(message = "El tipo es obligatorio")
     private String tipo;
 
+    @NotBlank(message = "La descripción es obligatoria")
+    private String descripcion;
+
+    @NotBlank(message = "La imagen es obligatoria")
+    private String imagenUrl;
+
     public AccesorioRequestDTO() {
     }
 
@@ -52,4 +58,20 @@ public class AccesorioRequestDTO {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public String getDescripcion() {
+    return descripcion;
+}
+
+public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+}
+
+public String getImagenUrl() {
+    return imagenUrl;
+}
+
+public void setImagenUrl(String imagenUrl) {
+    this.imagenUrl = imagenUrl;
+}
 }

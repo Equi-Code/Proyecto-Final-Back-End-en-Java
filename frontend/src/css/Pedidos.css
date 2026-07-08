@@ -161,6 +161,28 @@
     box-shadow: 0 0 0 3px var(--color-primario-glow);
 }
 
+/* --- Acciones del detalle de pedido (ej: volver, eliminar pedido) --- */
+.acciones-pedido{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-eliminar{
+    background: var(--color-peligro);
+    color: white;
+    border: none;
+    border-radius: var(--radio-sm);
+    padding: 0 var(--btn-padding-x);
+    cursor: pointer;
+    transition: background var(--transicion);
+}
+
+.btn-eliminar:hover{
+    background: var(--color-peligro-hover);
+}
+
 /* --- Responsive: tabla scrollea en mobile en vez de romper el layout --- */
 @media (max-width: 640px){
     .tabla-pedidos th,

@@ -43,6 +43,8 @@ public class IndumentariaService {
         indumentaria.setStock(indumentariaActualizada.getStock());
         indumentaria.setMarca(indumentariaActualizada.getMarca());
         indumentaria.setTalle(indumentariaActualizada.getTalle());
+        indumentaria.setDescripcion(indumentariaActualizada.getDescripcion());
+indumentaria.setImagenUrl(indumentariaActualizada.getImagenUrl());
 
         return repository.save(indumentaria);
     }

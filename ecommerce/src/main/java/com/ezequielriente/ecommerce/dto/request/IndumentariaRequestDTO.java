@@ -23,6 +23,12 @@ public class IndumentariaRequestDTO {
     @NotNull(message = "Debe seleccionar un talle")
     private Talle talle;
 
+    @NotBlank(message = "La descripción es obligatoria")
+    private String descripcion;
+
+    @NotBlank(message = "La imagen es obligatoria")
+    private String imagenUrl;
+
     public IndumentariaRequestDTO() {
     }
 
@@ -65,4 +71,20 @@ public class IndumentariaRequestDTO {
     public void setTalle(Talle talle) {
         this.talle = talle;
     }
+
+        public String getDescripcion() {
+    return descripcion;
+}
+
+public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+}
+
+public String getImagenUrl() {
+    return imagenUrl;
+}
+
+public void setImagenUrl(String imagenUrl) {
+    this.imagenUrl = imagenUrl;
+}
 }

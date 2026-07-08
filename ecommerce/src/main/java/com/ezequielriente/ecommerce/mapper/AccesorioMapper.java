@@ -14,6 +14,8 @@ public class AccesorioMapper {
         accesorio.setPrecio(dto.getPrecio());
         accesorio.setStock(dto.getStock());
         accesorio.setTipo(dto.getTipo());
+        accesorio.setDescripcion(dto.getDescripcion());
+accesorio.setImagenUrl(dto.getImagenUrl());
 
         return accesorio;
     }
@@ -28,6 +30,8 @@ public class AccesorioMapper {
         dto.setStock(accesorio.getStock());
         dto.setTipo(accesorio.getTipo());
         dto.setCategoria(accesorio.getCategoria());
+                accesorio.setDescripcion(dto.getDescripcion());
+accesorio.setImagenUrl(dto.getImagenUrl());
 
         return dto;
     }

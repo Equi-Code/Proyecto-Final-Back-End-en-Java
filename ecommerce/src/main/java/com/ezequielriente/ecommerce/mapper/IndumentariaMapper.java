@@ -15,6 +15,8 @@ public class IndumentariaMapper {
         indumentaria.setStock(dto.getStock());
         indumentaria.setMarca(dto.getMarca());
         indumentaria.setTalle(dto.getTalle());
+        indumentaria.setDescripcion(dto.getDescripcion());
+        indumentaria.setImagenUrl(dto.getImagenUrl());
 
         return indumentaria;
     }
@@ -30,6 +32,8 @@ public class IndumentariaMapper {
         dto.setMarca(indumentaria.getMarca());
         dto.setTalle(indumentaria.getTalle());
         dto.setCategoria(indumentaria.getCategoria());
+        dto.setDescripcion(indumentaria.getDescripcion());
+        dto.setImagenUrl(indumentaria.getImagenUrl());
 
         return dto;
     }

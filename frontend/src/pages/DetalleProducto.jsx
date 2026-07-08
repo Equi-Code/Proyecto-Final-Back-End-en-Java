@@ -83,14 +83,21 @@ export default function DetalleProducto() {
 
             <h1>{producto.nombre}</h1>
 
-            <p className="categoria">
+            <img
+                src={
+                    producto.imagenUrl ||
+                    "https://placehold.co/700x500?text=Sin+Imagen"
+                }
+                alt={producto.nombre}
+                className="detalle-imagen"
+            />
 
-                {producto.categoria}
-
+            <p className="detalle-descripcion">
+                {producto.descripcion}
             </p>
 
 
-            <div className="detalle-info">
+           <div className="detalle-info">
 
                 <p>
                     <strong>Categoría:</strong> {producto.categoria}
