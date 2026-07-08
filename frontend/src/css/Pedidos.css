@@ -1,6 +1,3 @@
-/* ==========================================================================
-   PEDIDOS — usado por Pedidos.jsx (lista) y DetallePedido.jsx
-   ========================================================================== */
 
 .pedidos-container,
 .detalle-pedido-container{
@@ -116,9 +113,7 @@
     color: var(--color-text-muted);
 }
 
-/* ==========================================================================
-   DETALLE DE PEDIDO
-   ========================================================================== */
+
 .detalle-pedido-info{
     background: white;
     padding: 25px;

@@ -265,6 +265,10 @@ spring.datasource.password=tu_password
 
 ### 3. Backend
 
+```PowerShell
+
+.\mvnw spring-boot:run
+
 ```bash
 mvn clean install
 mvn spring-boot:run
@@ -286,6 +290,18 @@ npm run dev
 - MySQL Driver
 - SpringDoc OpenAPI (Swagger)
 - Lombok *(si se utiliza)*
+
+---
+
+### Variables de entorno
+
+-application.properties
+
+-spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce
+-spring.datasource.username=root
+-spring.datasource.password=tu_password
+
+-spring.jpa.hibernate.ddl-auto=update
 
 ---
 
@@ -319,7 +335,7 @@ npm run dev
 **Ezequiel Riente**
 Desarrollador Full Stack Java | React
 
-GitHub: [https://github.com/Equi-Code](https://github.com/Equi-Codeo)
+GitHub: [https://github.com/Equi-Code](https://github.com/Equi-Code)
 
 ---
 

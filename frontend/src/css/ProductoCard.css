@@ -115,6 +115,12 @@
 .acciones button,
 .acciones a{
     flex: 1;
+    height: auto;
+    min-height: var(--btn-alto);
+    padding: 10px 8px;
+    font-size: .9rem;
+    line-height: 1.2;
+    text-align: center;
 }
 
 .btn-detalle,

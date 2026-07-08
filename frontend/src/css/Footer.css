@@ -1,7 +1,113 @@
 .footer{
-    background: var(--color-dark);
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: auto;
+
+    background:#111827;
+    color:white;
+
+    margin-top:auto;
+
+    padding:40px 20px;
+
+}
+
+.footer-contenido{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+.footer-logo{
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+
+}
+
+.footer-logo span{
+
+    color:#22c55e;
+
+}
+
+.footer-descripcion{
+
+    color:#cbd5e1;
+
+    margin-bottom:30px;
+
+    font-size:.95rem;
+
+}
+
+.footer-links{
+
+    list-style:none;
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:30px;
+
+    padding:0;
+
+    margin:25px 0;
+
+}
+
+.footer-links a{
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+    font-weight:500;
+
+}
+
+.footer-links a:hover{
+
+    color:#22c55e;
+
+}
+
+.footer hr{
+
+    border:none;
+
+    height:1px;
+
+    background:#374151;
+
+    margin:25px 0;
+
+}
+
+.footer-copy{
+
+    color:#9ca3af;
+
+    font-size:.9rem;
+
+    line-height:1.8;
+
+}
+
+.footer-marca{
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.footer-marca span{
+    color: #3b82f6;
 }
